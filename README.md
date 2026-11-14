@@ -1,20 +1,27 @@
 # Pretty Chat
 
-Give every conversation a little personality. Pretty Chat is an agent skill that helps people choose clear, searchable conversation titles, with optional symbols, emoji, and text styles.
+Give every conversation a little personality. Pretty Chat is an agent skill for clear, searchable conversation titles, with optional symbols, emoji, tags, and text styles.
 
 ## Get started
 
 1. Copy `skills/pretty-chat` into your Codex skills directory: `~/.codex/skills/pretty-chat` (on Windows, `%USERPROFILE%\.codex\skills\pretty-chat`).
 2. Start a new conversation and ask: **Use `$pretty-chat` to help me set up conversation naming.**
-3. Describe what you do and the kinds of chats you have. Pretty Chat will suggest categories and symbols that you can adjust.
+3. Describe your work or the kinds of chats you have, then choose a style. Review the suggested categories and symbols and change anything you like.
+4. If you want the style available in future chats, choose a user-wide or workspace instruction file when the agent offers to save it. Otherwise, the choices apply to the current conversation.
 
-To encourage naming in every new chat, add an instruction to your user or workspace `AGENTS.md` to use `$pretty-chat` for conversation titles. Skill selection and automatic execution depend on your host and configuration.
+For example, a designer might choose `✦` for design, `⌕` for research, and `✎` for content. A teacher might choose `◆` for lesson plans and `○` for student resources. These are examples, not required categories.
+
+To encourage naming in every new chat, add an instruction to the relevant `AGENTS.md` asking the agent to use `$pretty-chat` for conversation titles. Skill selection and automatic execution depend on your host and configuration; neither this instruction nor installing the skill guarantees it will run in every chat.
 
 ## How it works
 
-The skill chooses concise titles based on your preferences. It can use Unicode symbols, emoji, text tags, or optional Unicode text effects. If the host provides a chat-title tool, the agent can use it; otherwise it can suggest a title for you to set. Rendering, search, and accessibility of styled characters vary by device and app.
+Pretty Chat uses your preferences to name the conversation around its goal. It respects a title you chose, and can update an automatic title when the topic changes if your preferences and host allow it. If a title tool is available, the agent can rename the chat and report the result. Otherwise, it gives you a title to copy.
 
-The skill does not embed custom images or control icon colors. Automatic token usage and cost counters are not included; those remain an experimental local investigation and are not a supported feature.
+Unicode symbols and text effects can look different across devices and may affect search, copying, or accessibility. Plain text is always an option. The skill cannot embed custom images or control icon colors in a plain-text title. Automatic token usage and cost counters are not included.
+
+## Testing
+
+Use the scenarios in [tests/scenarios.md](tests/scenarios.md) to evaluate behavior in a host with and without a title tool. The manifest validator checks the skill's structure but cannot establish that an agent follows its instructions or that a host renders characters correctly.
 
 ## Privacy
 
